@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.get('/', (req, res) => {
-  res.send("Welcome To Dr. Driving's Server")
+  res.send("Welcome To Dr. Driving Server")
 })
 
 
