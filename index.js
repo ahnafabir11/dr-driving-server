@@ -64,6 +64,9 @@ client.connect(err => {
       {paymentId},
       { $set: { orderStatus}}
     )
+    .then(result => {
+      res.status(200).send(true)
+    })
   })
 
   app.get('/services', (req, res) => {
