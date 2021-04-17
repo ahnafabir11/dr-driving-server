@@ -76,6 +76,14 @@ client.connect(err => {
       })
   })
 
+  app.delete('/deleteservices', (req, res) => {
+    const title = req.body.title;
+    serviceCollection.deleteOne({title})
+      .then(result => {
+        res.status(200).send(true)
+      })
+  })
+
   app.post('/addservice', (req, res) => {
     const {title, classes, duration, price} = req.body;
     const file = req.files.file;
