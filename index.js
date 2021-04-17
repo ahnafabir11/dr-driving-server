@@ -24,6 +24,7 @@ client.connect(err => {
   const adminCollection = client.db(`${process.env.DB_NAME}`).collection("admins");
   const serviceCollection = client.db(`${process.env.DB_NAME}`).collection("service");
   const reviewCollection = client.db(`${process.env.DB_NAME}`).collection("reviews");
+  const experienceCollection = client.db(`${process.env.DB_NAME}`).collection("experience");
 
   app.post('/allorders', (req, res) => {
     const email = req.body.email;
@@ -131,6 +132,13 @@ client.connect(err => {
     reviewCollection.insertOne(review)
       .then(result => {
         res.status(200).send(result.insertedCount > 0)
+      })
+  })
+
+  app.get('/experience', (req, res)=> {
+    experienceCollection.find()
+      .toArray((err, experience)=> {
+        res.send(experience)
       })
   })
 
